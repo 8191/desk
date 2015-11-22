@@ -25,7 +25,8 @@ if (( CURRENT == 2 )); then
 fi
 
 case "$words[2]" in
-  go|.|edit|"")
+  help|init|list|ls|version) ;;
+  *)
     _all_desks
     _wanted desks expl 'desks' compadd -a desks ;;
 esac
