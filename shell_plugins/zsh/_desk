@@ -22,11 +22,10 @@ _subcommands=(
 
 if (( CURRENT == 2 )); then
   _describe -t commands 'desk subcommand' _subcommands
-  return
 fi
 
 case "$words[2]" in
-  go|.|edit)
+  go|.|edit|"")
     _all_desks
     _wanted desks expl 'desks' compadd -a desks ;;
 esac
