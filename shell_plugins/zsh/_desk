@@ -2,7 +2,7 @@
 #autoload
 
 _all_desks() {
-  desks=($(desk list | cut -d' ' -f1))
+  desks=($(desk list --only-names))
 }
 
 local expl
@@ -17,6 +17,7 @@ _subcommands=(
   'edit:Edit or create a desk, defaults to current desk'
   'go:Activate a desk'
   '.:Activate a desk'
+  'run:Run a command within a desk environment'
   'version:Show the desk version.'
 )
 
@@ -25,8 +26,7 @@ if (( CURRENT == 2 )); then
 fi
 
 case "$words[2]" in
-  help|init|list|ls|version) ;;
-  *)
+  go|.|edit|run)
     _all_desks
     _wanted desks expl 'desks' compadd -a desks ;;
 esac
